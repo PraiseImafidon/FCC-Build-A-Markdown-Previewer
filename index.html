@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build A Markdown Previewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.19/marked.min.js" integrity="sha512-CPGsmz+2yVpGnri/iBEoPVrRHiPaHQ3gzuSCfmfnZ2KKF/GKMvW8S7uVFRbZD0uOVMaNYY4HCATeCShxZWgp6w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    function updatePreview() {
+        document.getElementById("preview").innerHTML =  marked.parse(document.getElementById("editor").value)
+    }
+
+    function setDefault() {
+        let defaultText = `\
+  # Praise Imafidon
+  ## A FCC Markdown Previewer project
+ [For more information, click](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects)
+        
+       <dl>
+         <dt>Definition list</dt>
+         <dd>Is something people use sometimes.</dd>
+
+         <dt>Markdown in HTML</dt>
+         <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+      </dl>
+
+\`This is an example of inline code\`
+
+\`\`\`
+function example() {
+   return multilineCodeBlock
+}
+\`\`\`
+
+- Code 
+- All
+- Day
+- This 
+- Is 
+- What
+- I
+- Always
+- Do
+
+>This is an example of block quote
+
+![Praise Imafidon](https://usefulprogrammer.org/wp-content/uploads/2020/05/00_Leonardo_da_Vinci_-_Ginevra_de_Benci.jpg)
+
+**This is an example of Bolded Text**`;
+        let editorField = document.getElementById("editor");
+        let previewElement = document.getElementById("preview");
+        editorField.value = defaultText;
+        previewElement.innerHTML = marked.parse(defaultText);
+    }
+</script>
+
+</head>
+<body onload="setDefault()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center text-white bg-success">
+                <h1>Build A Markdown Previewer</h1>
+           </div>
+           </div>
+
+          <div class="row">
+            <div class="col-6 bg-primary d-flex flex-column">
+                <p>Editor</p>
+                <div class="form-group flex-grow-1 d-flex flex-column">
+                <textarea id="editor" onkeyup="updatePreview()" class="form-control flex-grow-1"></textarea>
+                </div>
+            </div>
+            <div class="col-6 bg-danger">
+                <p>Markddown previewer</p>
+                <div id="preview"></div>
+            </div>
+        </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js "></script>
+</body>
+</html>
